@@ -1,0 +1,24 @@
+<script type="text/javascript">
+
+// http://127.0.0.1:5500/me.html?     name=francis &  age=72
+const url = window.location.href;
+console.log(url);
+
+const queryString = url.split('?')[1];
+const pairs = queryString.split('&');
+
+//Name and age
+urlData = {}
+
+pairs.forEach(function(pairs) {
+    //name -> 0 
+    //francis -> 1
+    const s = pairs.split('=');
+    urlData[s[0]] = s[1];
+});
+
+const {name, age} = urlData;
+console.log(`My name is ${name} and I'm ${age}`)
+console.log(urlData);
+
+</script>

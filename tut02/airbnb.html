@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body {
+                font-family: Circular, Arial, Helvetica, sans-serif;
+            }
+            .buttons {
+                margin-bottom: 50px;
+            }
+            .login-button { 
+                border: 0px solid white;
+
+                background: rgb(0, 132, 137);
+                padding: 10px 20px;
+                border-radius: 3px;
+                color: white;
+            }
+
+            .signup-button {
+                background: white;  
+                border: 1px solid rgb(0, 132, 137);
+                padding: 9px 20px;
+                border-radius: 3px;
+                color: rgb(0, 132, 137);
+            }
+
+            #divider {
+                height: 1px;
+                background: rgb(235, 235, 235);
+                width: 100%;
+            }
+
+            .article-container {
+                display: flex;
+                flex-direction: row;
+            }
+
+            .article-category {
+                /* flex-grow flex-shrink flex-basis */
+                flex: 0 0 300px; 
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 5px;
+            }
+
+            li {
+                padding: 8px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1> Log in to contact us </h1>
+        <p> This will help us to quickly identify you and get you the right kind of help </p>
+
+        <div class="buttons">
+            <button class="login-button"> Log In </button>
+            <button class="signup-button"> Sign Up </button>
+        </div>
+        
+        <div id="divider"></div>
+
+        <h2> These articles might help </h2>
+        <div class="article-container">
+            <div class="article-category">
+                <h3> Getting started </h3>
+                <ul>
+                    <li> How do I create an account? </li>
+                    <li>Airbnb Referral Program Terms and Conditions</li>
+                    <li>How do I search for a place to stay?</li>
+                    <li>How do I contact a host before booking a reservation?</li>
+                </ul>
+            </div>
+            <div class="article-category">
+                <h3> Your account </h3>
+                <ul>
+                    <li>How do I reset or change my password?</li>
+                    <li>How do I edit, remove or add a payment method?</li>
+                    <li>How do I edit or change my payout method?</li>
+                    <li>How do I deactivate or delete my account?</li>
+                </ul>
+
+            </div>
+        </div>
+    </body>
+</html>
