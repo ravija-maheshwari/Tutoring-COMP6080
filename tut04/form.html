@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Form</title>
+    </head>
+    <body>
+        <form action="" method="get">
+            <label> Firstname: </label><input type="text" name="firstName" id="firstName"/> 
+            <label> Email: </label><input type="text" name="email" id="email"/> 
+            <input disabled="disabled" type="submit" value="Submit" id="submit"/>
+        </form>
+        <script type="text/javascript">
+
+            //Check for firstName
+            const nameValid = () => {
+                const firstName = document.getElementById("firstName");
+                return RegExp('[a-zA-Z]{2,20}').test(firstName.value)
+            }
+
+            //To change to red if invalid
+            firstName.addEventListener("blur", event => {
+                if( !nameValid() ){
+                    document.getElementById("firstName").style.background = 'red';
+                }
+            });
+
+            //To change back if the inoput box is in focus
+            firstName.addEventListener("focus", event => {
+                document.getElementById("firstName").style.background = 'none';
+            });
+
+
+            //Check for email
+            const emailValid = () => {
+                const eamil = document.getElementById("email");
+                return RegExp('.+\@.+\..+').test(email.value)
+            }
+
+            //To check the state of submit button
+            const checkSubmit = () => {
+                document.getElementById("submit").disabled = true;
+                if(nameValid() && emailValid()) {
+                    document.getElementById("submit").disabled = false;
+                }
+            }
+
+            email.addEventListener("blur", emailValid);
+
+            firstName.addEventListener("keyup", event => {
+                checkSubmit();
+            })
+
+            email.addEventListener("keyup", event => {
+                checkSubmit();
+            })
+
+
+
+
+        </script>
+    </body>
+</html>
