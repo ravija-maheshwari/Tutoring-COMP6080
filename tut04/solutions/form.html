@@ -5,15 +5,15 @@
     </head>
     <body>
         <form action="" method="get">
-            <p><label for="firstName">First Name: </label><input type="text" name="firstName" id="firstName" /></p>
+            <p><label for="firstName">First Name: </label><input type="text" name="firstName" id="firstName"/></p>
             <p><label for="email">Email: </label><input type="text" name="email" id="email" /></p>
             <input disabled="disabled" id="submit" type="submit" value="Submit" />
         </form>
         <script type="text/javascript">
 
             const nameValid = () => {
-                const val = document.getElementById('firstName').value;
-                return RegExp('^[a-zA-Z]{2,20}$').test(val);
+                const firstName = document.getElementById('firstName').value;
+                return RegExp('^[a-zA-Z]{2,20}$').test(firstName);
             };
             const emailValid = () => {
                 const val = document.getElementById('email').value;
@@ -25,14 +25,15 @@
                     document.getElementById('submit').disabled = false;
                 }
             };
-
-            document.getElementById('firstName').addEventListener('keyup', checkSubmit);
-            document.getElementById('firstName').addEventListener('blur', () => {
+            //addEventListener uses the 'id' as the target it should attach to, when it can't find a variable in the scope matching the target name (ie. if you don't define firstName as a variable in the scope, it looks for an element with 'firstName' as the id
+            console.log(firstName);
+            firstName.addEventListener('keyup', checkSubmit);
+            firstName.addEventListener('blur', () => {
                 if (!nameValid()) {
                     document.getElementById('firstName').style.background = 'red';
                 }
             });
-            document.getElementById('firstName').addEventListener('focus', () => {
+            firstName.addEventListener('focus', () => {
                 document.getElementById('firstName').style.background = 'none';
             });
             document.getElementById('email').addEventListener('keyup', checkSubmit);
