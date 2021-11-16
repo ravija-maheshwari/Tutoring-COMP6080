@@ -2,15 +2,24 @@ import { shallow } from 'enzyme';
 import * as React from 'react';
 import {Menu, MenuButton, MenuItem} from './Menu';
 
-describe('MenuButton', () => {
+// 1. On click handler triggered when clicked
+// 2. Aria stuff 
+describe('MenuButton Test Suite', () => {
+   //A function that does nothing
   const noop = () => {};
 
+  //Test 1 in Jest
   it('triggers onClick event handler when clicked', () => {
-    const onClick = jest.fn();
+    //Create a mock function and then we will inspect this mock function's state to 
+    //ensure the onClick works as expected
+    //Can simulate clicks with this
+    const onClick = jest.fn(); // mock onClick function
     shallow(<MenuButton onClick={onClick} open={false} />).simulate('click');
-    expect(onClick).toBeCalledTimes(1);
-  });
 
+    //Google jest expect
+    expect(onClick).toBeCalledTimes(2);
+  });
+  
   it('aria-label attribute is defined', () => {
     const button = shallow(<MenuButton onClick={noop} open={false} />);
     expect(button.props()['aria-label']).toBeDefined();
@@ -27,12 +36,18 @@ describe('MenuButton', () => {
   });
 });
 
+// 1. Title exists
+// 2. Title is customised
 describe('MenuItem', () => {
+  //A function that does nothing
   const noop = () => {};
 
   it('triggers onClick event handler with title when clicked', () => {
     const onClick = jest.fn();
+
     shallow(<MenuItem onClick={onClick} title={'A title'} />).simulate('click');
+
+    //The final check 
     expect(onClick).toBeCalledWith('A title');
   });
 
@@ -43,19 +58,23 @@ describe('MenuItem', () => {
   })
 });
 
+// 1. Closed by default
+// 2. Menu item created for each provided item
 describe('Menu', () => {
   const noop = () => {};
   const items = ['Item 1', 'Item 2', 'Item 3'];
 
   it('is closed by default', () => {
     const menu = shallow(<Menu onClick={noop} items={items} />);
-    expect(menu.find(MenuButton).first()).toBeDefined();
-    expect(menu.find(MenuItem).length).toBe(0);
+    //google enzyme find
+    expect(menu.find(MenuButton)).toBeDefined(); //Menu button is defined
+    expect(menu.find(MenuItem).length).toBe(0); //Menu item has length = 0 i.e. it is 
   });
 
   it('creates a MenuItem for every provided item', () => {
     const menu = shallow(<Menu onClick={noop} items={items} />);
     expect(menu.find(MenuItem).length).toBe(0);
+
     menu.find(MenuButton).first().simulate('click');
     expect(menu.find(MenuItem).length).toBe(3);
   });
